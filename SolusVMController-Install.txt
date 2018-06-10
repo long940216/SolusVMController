@@ -1,0 +1,58 @@
+SolusVMController下载及安装
+
+
+SolusVMController is PHP+MYSQL application to control all your SolusVM based VPSes under one interface.
+This application access your VPS using API provided by Soluslabs.
+Please make sure your VPS provider has enabled API access in order to use this application.
+
+SolusVMController 是PHP+MYSQL应用程序，
+用于在一个界面下控制所有基于SolusVM的VPS。
+此应用程序使用Soluslabs提供的API访问您的VPS。
+请确保您的VPS提供商已启用API访问权限才能使用此应用程序。
+
+1.程序下载（原作者SeiKan）：https://github.com/seikan/SolusVMController/archive/3.3.tar.gz
+
+#程序下载（本人Fork）：https://github.com/long940216/SolusVMController/archive/3.3.tar.gz
+
+2.解压SolusVMController-3.3.tar.gz，将文件放入网站根目录（eg : /var/www/html）
+
+3.把configuration.php.default修改成configuration.php
+
+4.修改setup.php中定义随机管理密码为已知密码
+	setup.php 	第161行
+	修改前：$_SESSION['password'] = random(rand(8, 20));
+	修改后：$_SESSION['password'] =  'admin123';
+	
+	源代码默认安装过程中是随机生成密码，然后发送邮件到输入的管理邮箱。
+	有很多人的PHP环境有可能发不了邮箱，所以特意修改成已知密码。
+	密码自己定义，我初始用的admin，安装完成可以通过页面设置项更改。
+	
+	PasswordHash("admin")=f34a62f6bd82b5319f88b93b67627b95069921de
+	PasswordHash("admin123")=e1573c78b9e2212770a070400ed2fafbdefbebb1
+
+5.访问http://127.0.0.1/SolusVMController/进行安装
+	a第一页.欢迎页面；右侧语言选择为：简体中文；下一步；
+	b第二页.环境检查；下一步；
+	c第三页.MySQL信息；输入主机、用户、密码、数据库名；下一步；
+	d第四页.管理员信息；输入用户名、电子邮箱；下一步；
+	e第五页.安装完成；YOU_CAN_NOW_LOG_IN,完成。
+	f第六页。提示删除setup.php，将setup.php文件删除或者重命名为setup-back.php
+
+6.登陆界面http://127.0.0.1/SolusVMController/
+	输入电子邮箱、setup设置的初始密码，登陆
+	
+7.新增VM
+	根据虚机原管理面板填写相关信息
+	名字：自定义
+	虚拟环境：选择对应值
+	主机：原厂商给的Control Panel地址
+	API key：原管理面板API信息
+	API Hash：原管理面板API信息
+	标签：自定义
+	
+8.完成，可以对虚机进行基本管理。
+
+这么简单，就不用贴图了吧，想要贴图演示，请留言。
+
+立Flag，抽时间研究一下源码，看看能不能在页面上显示更多的虚机属性信息。
+	
