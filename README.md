@@ -14,3 +14,5 @@ SolusVMController 是PHP应用程序，用于在一个界面下控制所有基�
 此应用程序使用Soluslabs提供的API访问您的VPS。
 
 请确保您的VPS提供商已启用API访问权限才能使用此应用程序。
+
+我自己写了一个安装手册，你们看一下吧。
